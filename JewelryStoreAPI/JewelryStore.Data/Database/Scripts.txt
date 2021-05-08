@@ -1,0 +1,69 @@
+﻿
+
+CREATE TABLE Users(
+	UserId INT IDENTITY(1,1) CONSTRAINT PK_Users PRIMARY KEY,
+	FirstName NVARCHAR (160) NOT NULL,
+	LastName NVARCHAR (160) NOT NULL,
+	Email NVARCHAR (160) NOT NULL,
+	PasswordHash VARBINARY(MAX) NOT NULL,
+	PasswordSalt VARBINARY(MAX) NOT NULL,
+	IsTempPassword BIT NOT NULL,
+	LoginFailureAttempts INT NOT NULL DEFAULT 0,
+	CreatedDate DATETIME NOT NULL,
+	ModifiedDate DATETIME NULL
+)
+
+CREATE TABLE Roles(
+	RoleId INT IDENTITY(1,1) CONSTRAINT PK_Roles PRIMARY KEY,
+	RoleDescription VARCHAR (160) NOT NULL,
+)
+
+CREATE TABLE UserRoles(
+	UID INT IDENTITY(1,1) CONSTRAINT PK_UserRoles PRIMARY KEY,
+	RoleId INT NOT NULL CONSTRAINT FK_UserRoles_Roles FOREIGN KEY REFERENCES Roles(RoleId),
+	UserId INT NOT NULL CONSTRAINT FK_UserRoles_Users FOREIGN KEY REFERENCES Users(UserId)
+)
+
+CREATE  TABLE Settings
+(
+	SettingsId INT IDENTITY(1,1) CONSTRAINT PK_Settings PRIMARY KEY,
+	Description VARCHAR(160) NOT NULL
+)
+
+CREATE  TABLE SettingsValue
+(	
+	UID INT IDENTITY(1,1) CONSTRAINT PK_SettingsValue PRIMARY KEY,
+	SettingsId INT NOT NULL CONSTRAINT FK_SettingsValue_Settings FOREIGN KEY REFERENCES Settings(SettingsId),
+	Value VARCHAR(160) NOT NULL
+)
+
+---- Insert Script -----
+/*INSERT INTO Users (FirstName,LastName,Email,PasswordHash,PasswordSalt,IsTempPassword,LoginFailureAttempts,
+CreatedDate)
+VALUES
+('Normal', 'User', 'normal@gmail.com', 
+9CoZkqhjNWp1S4mlFuiOFuHKG8OlrgaSNCcHSA1RgPTJlaX2W6gZSTrch9gOzBGEqTyIz0SUEOawkRhcS4rFaQ==,
+8MfG0KPGfbmxbtwWyHCZKdzXSckHtsFtakeIAEv+,0,0,GETUTCDATE()),
+('Privileged', 'User', 'privileged@gmail.com', '','',0,0,GETUTCDATE()) */
+
+
+INSERT INTO Roles(RoleDescription)
+VALUES('Normal'),('Privileged')
+
+INSERT INTO UserRoles(RoleId,UserId)
+VALUES(1,1),(2,2)
+
+INSERT INTO Settings(Description)
+VALUES('PrivilegeDiscount')
+
+INSERT INTO SettingsValue(SettingsId,Value)
+VALUES(1,2)
+
+
+select * from Users
+select * from Roles
+select * from UserRoles
+select * from Settings
+select * from SettingsValue
+
+
