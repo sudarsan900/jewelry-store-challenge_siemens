@@ -1,9 +1,8 @@
 import { Injectable, Injector } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BaseApiProvider, BASE_API_PROVIDER } from '../app-core/env-config';
-import { IEstimationModel } from '../models/estimation-model';
 import { Observable } from 'rxjs';
-import { DiscountResponseModel } from '../models/discount-response-model';
+import { IDiscountResponseModel, IEstimationModel } from '@models';
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +22,8 @@ export class EstimationService {
   }
 
 
-  getDiscount(): Observable<DiscountResponseModel> {
-    return this.httpClient.get<DiscountResponseModel>(`${this.baseAPIProvider.baseApiUrl}/api/estimation/getDiscount`);
+  getDiscount(): Observable<IDiscountResponseModel> {
+    return this.httpClient.get<IDiscountResponseModel>(`${this.baseAPIProvider.baseApiUrl}/api/estimation/getDiscount`);
   }
 
 }

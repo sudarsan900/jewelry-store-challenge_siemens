@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthRepoService } from 'src/app/repo/auth-repo.service';
+import { AuthRepoService } from '@repos';
 
 @Component({
   selector: 'app-app-layout',

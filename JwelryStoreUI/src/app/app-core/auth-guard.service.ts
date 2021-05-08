@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { AuthRepoService } from '../repo/auth-repo.service';
+import { AuthRepoService } from '@repos';
 
 @Injectable()
 export class AuthGuardService implements CanActivate {

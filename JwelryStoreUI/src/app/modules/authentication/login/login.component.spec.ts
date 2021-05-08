@@ -5,11 +5,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BASE_API_PROVIDER } from 'src/app/app-core/env-config';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { AuthenticationService } from 'src/app/services/authentication.service';
-import { ILoginRequestModel } from 'src/app/models/login-request-model';
-import { ILoginResponseModel } from 'src/app/models/login-response-model';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '@services';
+import { ILoginRequestModel, ILoginResponseModel } from '@models';
 
 class AuthenticationServiceStub extends AuthenticationService {
   authenticate(reqData: ILoginRequestModel): Observable<ILoginResponseModel> {

@@ -6,13 +6,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { BASE_API_PROVIDER, baseProvider } from 'src/app/app-core/env-config';
-import { AuthRepoService } from 'src/app/repo/auth-repo.service';
-import { ILoginResponseModel } from 'src/app/models/login-response-model';
+import { BASE_API_PROVIDER } from 'src/app/app-core/env-config';
 import { of } from 'rxjs';
-import { EstimationService } from 'src/app/services/estimation.service';
-import { DiscountResponseModel } from 'src/app/models/discount-response-model';
 import { PrintToScreeModalComponent } from '../print-to-scree-modal/print-to-scree-modal.component';
+import { AuthRepoService } from '@repos';
+import { IDiscountResponseModel, ILoginResponseModel } from '@models';
+import { EstimationService } from '@services';
 
 class AuthRepoServiceStub extends AuthRepoService {
   getCurrentUser() {
@@ -120,7 +119,7 @@ describe('EstimationFormComponent', () => {
     spyOn(estimationService, 'getDiscount').and.returnValues(of({
       discount: 2,
       status: true
-    } as DiscountResponseModel));
+    } as IDiscountResponseModel));
     component.getDiscount();
     expect(estimationService.getDiscount).toHaveBeenCalled();
     expect(component.discount.value).toEqual(2);

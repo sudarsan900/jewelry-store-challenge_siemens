@@ -3,7 +3,7 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { AuthRepoService } from './auth-repo.service';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ILoginResponseModel } from '../models/login-response-model';
+import { ILoginResponseModel } from '@models';
 
 describe('Service: AuthRepo', () => {
   beforeEach(() => {

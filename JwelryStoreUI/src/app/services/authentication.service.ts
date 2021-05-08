@@ -1,9 +1,8 @@
 import { Injectable, Injector } from '@angular/core';
 import { BaseApiProvider, BASE_API_PROVIDER } from '../app-core/env-config';
-import { ILoginRequestModel } from '../models/login-request-model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ILoginResponseModel } from '../models/login-response-model';
+import { ILoginRequestModel, ILoginResponseModel } from '@models';
 
 @Injectable({
   providedIn: 'root'

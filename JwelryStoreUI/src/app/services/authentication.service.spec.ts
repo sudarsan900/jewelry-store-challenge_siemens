@@ -1,11 +1,8 @@
-/* tslint:disable:no-unused-variable */
-
-import { TestBed, async, inject } from '@angular/core/testing';
-import { AuthenticationService } from './authentication.service';
-import { HttpClientModule } from '@angular/common/http';
-import { BASE_API_PROVIDER, baseProvider } from '../app-core/env-config';
+import { TestBed, inject } from '@angular/core/testing';
+import { BASE_API_PROVIDER } from '../app-core/env-config';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { ILoginRequestModel } from '../models/login-request-model';
+import { AuthenticationService } from '@services';
+import { ILoginRequestModel } from '@models';
 
 describe('Service: Authentication', () => {
 

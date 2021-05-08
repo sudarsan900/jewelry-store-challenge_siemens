@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthRepoService } from 'src/app/repo/auth-repo.service';
-import { ILoginResponseModel } from 'src/app/models/login-response-model';
+import { IDiscountResponseModel, IEstimationModel, ILoginResponseModel } from '@models';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AuthRepoService } from '@repos';
+import { EstimationService } from '@services';
 import { PrintToScreeModalComponent } from '../print-to-scree-modal/print-to-scree-modal.component';
-import { IEstimationModel } from 'src/app/models/estimation-model';
-import { EstimationService } from 'src/app/services/estimation.service';
-import { DiscountResponseModel } from 'src/app/models/discount-response-model';
 
 @Component({
   selector: 'app-estimation-form',
@@ -58,7 +56,7 @@ export class EstimationFormComponent implements OnInit {
   }
 
   getDiscount() {
-    this.estimationService.getDiscount().subscribe((o: DiscountResponseModel) => {
+    this.estimationService.getDiscount().subscribe((o: IDiscountResponseModel) => {
       if (o.status && o.discount > 0) {
         this.discount.setValue(o.discount);
       }

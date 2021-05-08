@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthenticationService } from 'src/app/services/authentication.service';
-import { ILoginRequestModel } from 'src/app/models/login-request-model';
-import { ILoginResponseModel } from 'src/app/models/login-response-model';
-import { AuthRepoService } from 'src/app/repo/auth-repo.service';
 import { Router } from '@angular/router';
+import { ILoginRequestModel, ILoginResponseModel } from '@models';
+import { AuthRepoService } from '@repos';
+import { AuthenticationService } from '@services';
 
 @Component({
   selector: 'app-login',

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { IEstimationModel } from '@models';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { IEstimationModel } from 'src/app/models/estimation-model';
 
 @Component({
   selector: 'app-print-to-scree-modal',

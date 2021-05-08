@@ -2,11 +2,10 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, inject } from '@angular/core/testing';
-import { EstimationService } from './estimation.service';
 import { BASE_API_PROVIDER } from '../app-core/env-config';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { DiscountResponseModel } from '../models/discount-response-model';
-import { IEstimationModel } from '../models/estimation-model';
+import { EstimationService } from '@services';
+import { IEstimationModel } from '@models';
 
 describe('Service: Estimation', () => {
   let estimationService: jasmine.SpyObj<EstimationService>;
