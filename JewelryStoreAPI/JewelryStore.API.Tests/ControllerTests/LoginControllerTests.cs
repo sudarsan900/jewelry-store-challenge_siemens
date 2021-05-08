@@ -23,17 +23,29 @@ namespace JewelryStore.API.Tests.ControllerTests
 
             var loginResponse = new LoginResponse()
             {
+                UserId =1,
+                Role="Normal",
                 Email = "normal@gmail.com",
                 HttpStatusCode = 200,
                 FirstName = "Normal",
-                LastName = "User"
+                LastName = "User",
+                Status = true
             };
 
             var loginServiceMock = new Mock<ILoginService>();
             loginServiceMock.Setup(x => x.ValidateUser(loginRequest)).
                 ReturnsAsync(loginResponse);
 
+            Mock<IConfigurationSection> mockSection = new Mock<IConfigurationSection>();
+            mockSection.Setup(x => x.Value).Returns("Test_TokenGenerator");
+
+            Mock<IConfiguration> mockConfig = new Mock<IConfiguration>();
             var configServiceMock = new Mock<IConfiguration>();
+
+            configServiceMock.Setup(x => x.GetSection("TokenGenerator:SecurityKey")).Returns(mockSection.Object);
+            configServiceMock.Setup(x => x.GetSection("TokenGenerator:Issuer")).Returns(mockSection.Object);
+            configServiceMock.Setup(x => x.GetSection("TokenGenerator:Audience")).Returns(mockSection.Object);
+
             var controller=  new LoginController(loginServiceMock.Object, configServiceMock.Object);
 
             //Act
@@ -46,6 +58,7 @@ namespace JewelryStore.API.Tests.ControllerTests
             var val = result.Value as LoginResponse;
             Assert.NotNull(val);
             Assert.Equal(loginRequest.UserName, val.Email);
+            Assert.NotNull(val.Token);
         }
     }
 }

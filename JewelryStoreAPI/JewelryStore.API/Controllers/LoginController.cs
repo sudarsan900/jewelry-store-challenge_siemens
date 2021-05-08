@@ -19,12 +19,22 @@ namespace JewelryStore.API.Controllers
     {
         private readonly ILoginService _loginService;
         private readonly IConfiguration _config;
+        /// <summary>
+        /// Login API to manage authentication process
+        /// </summary>
+        /// <param name="loginService"></param>
+        /// <param name="config"></param>
         public LoginController(ILoginService loginService, IConfiguration config)
         {
             _loginService = loginService;
             _config = config;
         }
 
+        /// <summary>
+        /// Authenticate an user if user pass a valid credential
+        /// </summary>
+        /// <param name="loginRequest"></param>
+        /// <returns></returns>
         [HttpPost("authenticate")]
         [ProducesResponseType(typeof(LoginResponse), 200)]
         [ProducesResponseType(400)]

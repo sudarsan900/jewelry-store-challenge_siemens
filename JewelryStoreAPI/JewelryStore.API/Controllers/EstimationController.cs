@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace JewelryStore.API.Controllers
 {
+    /// <summary>
+    /// API controller to manage Estimation
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
@@ -17,12 +20,21 @@ namespace JewelryStore.API.Controllers
     {
         private readonly IEstimationService _estimationService;
         private readonly IPdfGeneratorService _pdfGeneratorService;
+        /// <summary>
+        /// API controller to manage Estimation
+        /// </summary>
+        /// <param name="estimationService"></param>
+        /// <param name="pdfGeneratorService"></param>
         public EstimationController(IEstimationService estimationService, IPdfGeneratorService pdfGeneratorService)
         {
             _estimationService = estimationService;
             _pdfGeneratorService = pdfGeneratorService;
         }
 
+        /// <summary>
+        /// If the user role is Privileged get discount value
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("getDiscount")]
         [ProducesResponseType(typeof(DiscountResponseModel), 200)]
         [ProducesResponseType(400)]
@@ -37,7 +49,11 @@ namespace JewelryStore.API.Controllers
             return StatusCode(response.HttpStatusCode, response);
         }
 
-
+        /// <summary>
+        /// On printToFile click download PDF
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost("printToFile")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
