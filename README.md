@@ -1,3 +1,25 @@
+# jewelry-store-challenge - Project Setup
+• Copy local database connection. Located in this path ~JewelryStoreAPI\JewelryStore.Data\Database\JewelryStoreDB.mdf
+attached screenshot below<br>
+• Replace database connection in appsettings.json > ConnectionStrings.DefaultConnection<br>
+• Run API and UI both the application<br>
+• Use below predefined credentials available in local db <br>
+
+	Normal User
+	username- normal@gmail.com
+	password- 123
+
+	Privileged User
+	username- privileged@gmail.com
+	password- 123
+
+![Connection Setup](localdatabase.png)
+	
+
+	
+ 
+
+
 # jewelry-store-challenge
 The assignment will consist of two parts:  
 • Frontend in React/Angular  
